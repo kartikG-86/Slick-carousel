@@ -1,0 +1,27 @@
+<div class="carousel d-flex flex-row">
+    <div class="left-icon d-flex flex-column align-items-center justify-content-center">
+        <button class="btn border-0" [disabled]="this.startIndex == 0" (click)="prev()"> <i
+                class="bi bi-arrow-left-circle"></i></button>
+    </div>
+    <div class="cards-section p-1">
+        <div class="card1 m-2" style="width: 18rem;" *ngFor="let card of cards let i = index"
+            [ngStyle]="{'transform':'translateX(calc(' + (-startIndex + i)* scrollLength + 'px))' , 'width':'calc(100% /'  + itemPerPage + ') !important'}">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="">
+                <h5 class="">Card title</h5>
+                <p class="">Card {{i+1}} Start index {{startIndex}} End Index {{endIndex}}</p>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+        </div>
+    </div>
+    <div class="right-icon d-flex flex-column align-items-center justify-content-center">
+        <button class="btn border-0" [disabled]="this.endIndex == this.cards.length - 1" (click)="next()"> <i
+                class="bi bi-arrow-right-circle"></i></button>
+    </div>
+</div>
+
+<div class="d-flex flex-row justify-content-center align-items-center">
+    <div class="mx-1" *ngFor="let dot of createRange(totalDots) let i = index">
+        <i class="bi bi-dot fs-3" [ngClass]="i == activeDot ? 'text-primary' : ''"></i>
+    </div>
+</div>
