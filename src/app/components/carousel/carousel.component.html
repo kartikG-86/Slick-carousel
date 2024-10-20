@@ -3,14 +3,15 @@
         <button class="btn border-0" [disabled]="this.startIndex == 0" (click)="prev()"> <i
                 class="bi bi-arrow-left-circle"></i></button>
     </div>
-    <div class="cards-section p-1">
-        <div class="card1 m-2" style="width: 18rem;" *ngFor="let card of cards let i = index"
-            [ngStyle]="{'transform':'translateX(calc(' + (-startIndex + i)* scrollLength + 'px))' , 'width':'calc(100% /'  + itemPerPage + ') !important'}">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="">
-                <h5 class="">Card title</h5>
-                <p class="">Card {{i+1}} Start index {{startIndex}} End Index {{endIndex}}</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="cards-section row row-cols-xxl-5 row-cols-lg-3 row-cols-md-2 row-cols-1 p-1 g-3" #containerElement>
+        <div class="col" style="position:absolute;" *ngFor="let card of cards let i = index">
+            <div class="card" [ngStyle]="{'transform':'translateX(calc(' + (-startIndex + i)* scrollLength + 'px))'}">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="">Card title</h5>
+                    <p class="">Card {{i+1}} Start index {{startIndex}} End Index {{endIndex}}</p>
+                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
             </div>
         </div>
     </div>
